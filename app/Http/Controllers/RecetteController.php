@@ -35,7 +35,14 @@ class RecetteController extends Controller
             'image_path' => $imagePath,
         ]);
 
-        return redirect()->route('recettes.create');
-}
+        return redirect()->route('recettes.index');
+    }
+
+    public function index()
+    {
+        $recettes = Recette::all();
+        return view('showRecettes', ['recettes' => $recettes]);
+    }
+
 
 }

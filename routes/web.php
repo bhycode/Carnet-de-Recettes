@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $recette = Recette::find(1); // Replace with the appropriate logic to retrieve a Recette
+    return view('showRecettes', ['recette' => $recette]);
 });
 
 
@@ -23,3 +24,4 @@ use App\Http\Controllers\RecetteController;
 
 Route::get('/recettes/create', [RecetteController::class, 'create'])->name('recettes.create');
 Route::post('/recettes', [RecetteController::class, 'store'])->name('recettes.store');
+Route::get('/recettes', [RecetteController::class, 'index'])->name('recettes.index');
