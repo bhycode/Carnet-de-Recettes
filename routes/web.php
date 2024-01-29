@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+use App\Http\Controllers\RecetteController;
+
+Route::get('/recettes/create', [RecetteController::class, 'create'])->name('recettes.create');
+Route::post('/recettes', [RecetteController::class, 'store'])->name('recettes.store');
