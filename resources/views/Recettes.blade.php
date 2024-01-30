@@ -2,7 +2,21 @@
 
 @section('content')
     <div class="container mt-5">
-        <h2 class="mb-4">Recettes List</h2>
+
+        <!-- Barre de navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+            <a class="navbar-brand" href="{{ route('recettes.indexWithoutButtons')}}">Recettes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('recettes.index')}}">Recettes Manager</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <!-- Barre de recherche -->
         <form action="{{ route('recettes.search') }}" method="GET" class="mb-4">
