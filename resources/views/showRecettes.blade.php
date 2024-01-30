@@ -12,6 +12,13 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $recette->title }}</h5>
                     <p class="card-text">{{ $recette->content }}</p>
+
+                    <!-- Delete Form -->
+                    <form action="{{ route('recettes.destroy', $recette->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette Recette?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
                 </div>
             </div>
         @endforeach

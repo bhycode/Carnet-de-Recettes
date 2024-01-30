@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recette;
 
+use Illuminate\Support\Facades\Storage;
+
 
 class RecetteController extends Controller
 {
@@ -44,5 +46,20 @@ class RecetteController extends Controller
         return view('showRecettes', ['recettes' => $recettes]);
     }
 
+    public function destroy(Recette $recette)
+    {
+        // Supprimer l'image du stockage
+        $imagePath = 'public/' . $recette->image_path;
+
+        if ($recette->image_path && Storage::exists($imagePath)) {
+            Storage::delete($imagePath);
+        }
+
+        // Supprimer la Recette de la base de données
+        $recette->delete();
+
+        // Rediriger vers la liste des Recettes avec un message de succès
+        return redirect()->route('recettes.index')->with('success', 'Recette supprimée avec succès');
+    }
 
 }

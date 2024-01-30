@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\RecetteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +22,9 @@ Route::get('/', function () {
 });
 
 
-use App\Http\Controllers\RecetteController;
 
 Route::get('/recettes/create', [RecetteController::class, 'create'])->name('recettes.create');
 Route::post('/recettes', [RecetteController::class, 'store'])->name('recettes.store');
 Route::get('/recettes', [RecetteController::class, 'index'])->name('recettes.index');
+
+Route::delete('/recettes/{recette}', [RecetteController::class, 'destroy'])->name('recettes.destroy');
