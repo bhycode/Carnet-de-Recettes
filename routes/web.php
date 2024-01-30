@@ -42,3 +42,6 @@ Route::get('/', [RecetteController::class, 'indexWithoutButtons'])->name('recett
 // Search
 Route::get('/recettes/search', [RecetteController::class, 'search'])->name('recettes.search');
 
+// Show full content
+Route::get('/recettes/{recette}/showFull', [RecetteController::class, 'showFull'])->name('recettes.showFull');
+

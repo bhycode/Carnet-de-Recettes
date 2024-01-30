@@ -121,6 +121,10 @@ class RecetteController extends Controller
     }
 
 
+    public function showFull(Recette $recette)
+    {
+        return view('showFullRecette', compact('recette'));
+    }
 
 
 }
