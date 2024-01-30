@@ -28,17 +28,21 @@
             </div>
         </form>
 
-        @foreach ($recettes as $recette)
-            <div class="card mb-3" style="width: 300px;"> <!-- Adjust the width as needed -->
-                @if ($recette->image_path)
-                    <img src="{{ asset('storage/' . $recette->image_path) }}" alt="Recette Image" class="card-img-top img-fluid" style="width: 100%;">
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title">{{ $recette->title }}</h5>
-                    <p class="card-text">{{ Str::limit($recette->content, 100, '...') }}</p>
-                    <a href="{{ route('recettes.showFull', $recette->id) }}" class="btn btn-primary">Afficher la suite</a>
+        <div class="row">
+            @foreach ($recettes as $recette)
+                <div class="col-md-4 mb-3"> <!-- Adjust the column size as needed -->
+                    <div class="card" style="width: 100%;">
+                        @if ($recette->image_path)
+                            <img src="{{ asset('storage/' . $recette->image_path) }}" alt="Recette Image" class="card-img-top img-fluid">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $recette->title }}</h5>
+                            <p class="card-text">{{ Str::limit($recette->content, 100, '...') }}</p>
+                            <a href="{{ route('recettes.showFull', $recette->id) }}" class="btn btn-primary">Afficher la suite</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
 @endsection
