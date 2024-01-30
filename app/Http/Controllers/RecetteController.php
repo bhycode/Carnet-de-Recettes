@@ -100,4 +100,27 @@ class RecetteController extends Controller
         return view('updateRecette', compact('recette'));
     }
 
+
+    public function indexWithoutButtons()
+    {
+        $recettes = Recette::all();
+        return view('Recettes', ['recettes' => $recettes]);
+    }
+
+
+    // RecetteController.php
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $recettes = Recette::where('title', 'like', "%$search%")
+            ->orWhere('content', 'like', "%$search%")
+            ->get();
+
+        return view('Recettes', ['recettes' => $recettes]);
+    }
+
+
+
+
 }

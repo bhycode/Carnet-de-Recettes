@@ -35,3 +35,10 @@ Route::delete('/recettes/{recette}', [RecetteController::class, 'destroy'])->nam
 // Update
 Route::get('/recettes/{recette}/edit', [RecetteController::class, 'edit'])->name('recettes.edit');
 Route::put('/recettes/{recette}', [RecetteController::class, 'update'])->name('recettes.update');
+
+// Show Recettes only
+Route::get('/', [RecetteController::class, 'indexWithoutButtons'])->name('recettes.indexWithoutButtons');
+
+// Search
+Route::get('/recettes/search', [RecetteController::class, 'search'])->name('recettes.search');
+
