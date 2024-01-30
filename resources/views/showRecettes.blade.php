@@ -34,7 +34,7 @@
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $recette->title }}</h5>
-                    <p class="card-text">{{ $recette->content }}</p>
+                    <p class="card-text">{{ Str::limit($recette->content, 100, '...') }}</p>
 
 
                     <!-- Update Button -->

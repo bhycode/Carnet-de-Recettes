@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create("Recette", function (Blueprint $table) {
             $table->id();
             $table->string("title", 255);
-            $table->string("content");
+            $table->string("content", 30000);
             $table->string("image_path")->nullable();
         });
     }

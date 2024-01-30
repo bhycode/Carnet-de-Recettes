@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS `recette`;
 CREATE TABLE `recette` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `content` varchar(30000) NOT NULL,
   `image_path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
