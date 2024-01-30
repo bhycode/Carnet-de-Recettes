@@ -62,4 +62,42 @@ class RecetteController extends Controller
         return redirect()->route('recettes.index')->with('success', 'Recette supprimée avec succès');
     }
 
+
+    public function update(Request $request, Recette $recette)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Supprimer l'ancienne image
+            if ($recette->image_path) {
+                Storage::delete('public/' . $recette->image_path);
+            }
+
+            // Enregistrer la nouvelle image
+            $imagePath = $request->file('image')->store('images', 'public');
+        } else {
+            $imagePath = $recette->image_path;
+        }
+
+        // Mettre à jour la Recette
+        $recette->update([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'image_path' => $imagePath,
+        ]);
+
+        return redirect()->route('recettes.index')->with('success', 'Recette mise à jour avec succès');
+    }
+
+
+    public function edit(Recette $recette)
+    {
+        return view('updateRecette', compact('recette'));
+    }
+
 }

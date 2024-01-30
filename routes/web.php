@@ -23,8 +23,15 @@ Route::get('/', function () {
 
 
 
+// Create and show
 Route::get('/recettes/create', [RecetteController::class, 'create'])->name('recettes.create');
 Route::post('/recettes', [RecetteController::class, 'store'])->name('recettes.store');
 Route::get('/recettes', [RecetteController::class, 'index'])->name('recettes.index');
 
+// Delete
 Route::delete('/recettes/{recette}', [RecetteController::class, 'destroy'])->name('recettes.destroy');
+
+
+// Update
+Route::get('/recettes/{recette}/edit', [RecetteController::class, 'edit'])->name('recettes.edit');
+Route::put('/recettes/{recette}', [RecetteController::class, 'update'])->name('recettes.update');
