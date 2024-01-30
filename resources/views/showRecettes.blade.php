@@ -4,6 +4,9 @@
     <div class="container mt-5">
         <h2 class="mb-4">Liste de Recettes</h2>
 
+        {{-- Add button --}}
+        <a href="{{ route('recettes.create') }}" class="btn btn-success mb-4">Ajouter</a>
+
         @foreach ($recettes as $recette)
             <div class="card mb-3" style="width: 300px;"> <!-- Adjust the width as needed -->
                 @if ($recette->image_path)
