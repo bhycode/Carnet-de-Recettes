@@ -23,7 +23,7 @@
         <a href="{{ route('recettes.create') }}" class="btn btn-outline-success mb-4">Ajouter</a>
 
 
-        <!-- Barre de recherche -->
+        {{-- <!-- Barre de recherche -->
         <form action="{{ route('recettes.search') }}" method="GET" class="mb-4">
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Rechercher une recette">
@@ -31,7 +31,7 @@
                     <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
                 </div>
             </div>
-        </form>
+        </form> --}}
 
 
         <div class="row">

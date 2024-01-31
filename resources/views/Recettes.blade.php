@@ -29,7 +29,7 @@
         </form>
 
         <div class="row">
-            @foreach ($recettes as $recette)
+            @forelse($recettes as $recette)
                 <div class="col-md-4 mb-3">
                     <div class="card animate__animated animate__swing">
                         @if ($recette->image_path)
@@ -42,7 +42,12 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-md-12 text-center">
+                    <img src="{{ asset('storage/images\search-no-results.gif') }}" alt="Empty Search Results" style = "width: 300px;" class="img-fluid">
+                    <p class="mt-3 lead">Aucun résultat trouvé</p>
+                </div>
+            @endforelse
         </div>
     </div>
 

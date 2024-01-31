@@ -16,16 +16,18 @@ use App\Http\Controllers\RecetteController;
 |
 */
 
-Route::get('/', function () {
-    $recette = Recette::find(1); // Replace with the appropriate logic to retrieve a Recette
-    return view('showRecettes', ['recette' => $recette]);
-});
+// Route::get('/', function () {
+//     $recette = Recette::find(1); // Replace with the appropriate logic to retrieve a Recette
+//     return view('showRecettes', ['recette' => $recette]);
+// });
 
 
 
-// Create and show
+// Create and store
 Route::get('/recettes/create', [RecetteController::class, 'create'])->name('recettes.create');
 Route::post('/recettes', [RecetteController::class, 'store'])->name('recettes.store');
+
+// Show
 Route::get('/recettes', [RecetteController::class, 'index'])->name('recettes.index');
 
 // Delete
