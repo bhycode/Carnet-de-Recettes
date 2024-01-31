@@ -30,19 +30,22 @@
 
         <div class="row">
             @foreach ($recettes as $recette)
-                <div class="col-md-4 mb-3"> <!-- Adjust the column size as needed -->
-                    <div class="card" style="width: 100%;">
+                <div class="col-md-4 mb-3">
+                    <div class="card animate__animated animate__swing">
                         @if ($recette->image_path)
                             <img src="{{ asset('storage/' . $recette->image_path) }}" alt="Recette Image" class="card-img-top img-fluid">
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $recette->title }}</h5>
                             <p class="card-text">{{ Str::limit($recette->content, 100, '...') }}</p>
-                            <a href="{{ route('recettes.showFull', $recette->id) }}" class="btn btn-primary">Afficher la suite</a>
+                            <a href="{{ route('recettes.showFull', $recette->id) }}" class="btn btn-primary animate__animated animate__fadeInUp">Afficher la suite</a> <!-- Use a different animation class -->
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
+
+    <!-- Include animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 @endsection

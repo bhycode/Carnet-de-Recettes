@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Storage;
 
 class RecetteController extends Controller
 {
+
+    private $not_found_img_path = "images/img-not-found.jpg";
+
     public function create()
     {
         return view('addRecette');
@@ -27,7 +30,7 @@ class RecetteController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
         } else {
-            $imagePath = "images/img-not-found.jpg";
+            $imagePath = $this->not_found_img_path;
         }
 
 
@@ -51,7 +54,7 @@ class RecetteController extends Controller
 
         $imagePath = 'public/' . $recette->image_path;
 
-        if ($recette->image_path && Storage::exists($imagePath)) {
+        if ($recette->image_path && Storage::exists($imagePath) && $recette->image_path != $this->not_found_img_path) {
             Storage::delete($imagePath);
         }
 
@@ -74,7 +77,7 @@ class RecetteController extends Controller
 
         if ($request->hasFile('image')) {
 
-            if ($recette->image_path) {
+            if ($recette->image_path && $recette->image_path != $this->not_found_img_path) {
                 Storage::delete('public/' . $recette->image_path);
             }
 
