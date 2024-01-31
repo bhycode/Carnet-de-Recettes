@@ -27,7 +27,7 @@ class RecetteController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
         } else {
-            $imagePath = null;
+            $imagePath = "images/img-not-found.jpg";
         }
 
 
