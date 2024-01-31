@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Recette</title>
+    <title>Ajouter une reccete</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -13,28 +13,28 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add Recette</div>
+                <div class="card-header">Ajouter une recette</div>
 
                 <div class="card-body">
                     <form action="{{ route('recettes.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
-                            <label for="title">Title:</label>
+                            <label for="title">Titre:</label>
                             <input type="text" name="title" class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Content:</label>
+                            <label for="content">Contenu:</label>
                             <textarea name="content" class="form-control" rows="4" required></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="image">Image Upload:</label>
+                            <label for="image">Téléchargement d'image:</label>
                             <input type="file" name="image" class="form-control-file">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Add Recette</button>
+                        <button type="submit" class="btn btn-primary">Ajouter une recette</button>
                     </form>
                 </div>
             </div>
