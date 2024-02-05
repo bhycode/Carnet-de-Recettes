@@ -23,16 +23,25 @@
                             <label for="title">Titre:</label>
                             <input type="text" name="title" class="form-control" required>
                         </div>
+                        @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="form-group">
                             <label for="content">Contenu:</label>
                             <textarea name="content" class="form-control" rows="4" required></textarea>
                         </div>
+                        @error('content')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="form-group">
                             <label for="image">Téléchargement d'image:</label>
                             <input type="file" name="image" class="form-control-file">
                         </div>
+                        @error('image')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <button type="submit" class="btn btn-primary">Ajouter une recette</button>
                     </form>
